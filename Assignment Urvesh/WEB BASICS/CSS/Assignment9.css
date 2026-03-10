@@ -1,0 +1,90 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* background section */
+.container {
+    height: 1200px;
+    padding: 40px;
+    background: linear-gradient(90deg, #f6c6a5, #bfe6f2, #f7c6b6);
+    position: relative;
+}
+
+/* Box 1 Absolute */
+.box1 {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    background: #d86a86;
+    padding: 45px 30px;
+    transform: rotate(-20deg);
+    
+    font-weight: bold;
+}
+
+/* Box 6 Behind Box 2 */
+.box6 {
+    position: absolute;
+    top: 300px;
+    left: 48%;
+    width: 120px;
+    height: 60px;
+    background: purple;
+    text-align: center;
+    padding-top: 40px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* Box 2 */
+.box2 {
+    position: relative;
+    margin: 20px auto;
+    height: 170px;
+    width: 100px;
+    background: #cdb9cc;
+    text-align: center;
+    transform: rotate(90deg);
+    font-weight: bold;
+        z-index: 2;
+}
+
+/* Box 3 Fixed */
+/* Box 3 Fixed */
+.box3 {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: #d8cf90;
+    padding: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect */
+.box3:hover {
+    transform: scale(1.3);
+}
+
+/* Box 4 */
+.box4 {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    background: #f59b6b;
+    padding: 50px 10px;
+    font-weight: bold;
+}
+
+/* Box 5 Sticky */
+.box5 {
+    position: sticky;
+    top: 100px;
+    width: 150px;
+    height: 150px;
+    background: #9fb2c7;
+    padding: 10px;
+    font-weight: bold;
+}

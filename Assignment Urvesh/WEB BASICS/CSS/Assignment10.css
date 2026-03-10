@@ -1,0 +1,89 @@
+.intro::first-letter {
+    font-size: 40px;
+    font-weight: bold;
+    color: red;
+}
+
+.news::first-line {
+    background-color: lightyellow;
+    font-weight: bold;
+}
+
+.note::before {
+    content: "NOTE: ";
+    color: red;
+    font-weight: bold;
+}
+
+.copyright::after {
+    content: " © 2026";
+}
+
+.task-list li:first-child {
+    color: red;
+}
+
+.task-list li:nth-child(2) {
+    font-weight: bold;
+}
+
+.task-list li:last-child {
+    color: blue;
+}
+
+
+.alt-list li:nth-child(odd) {
+    background-color: #906363;
+}
+
+.alt-list li:nth-child(even) {
+    background-color: #d9edf7;
+}
+
+
+a[target="_blank"] {
+    color: red;
+}
+
+a[href^="https"] {
+    font-weight: bold;
+}
+
+a:hover {
+    color: green;
+}
+
+img[src$=".png"] {
+    border: 4px solid black;
+}
+
+input[placeholder*="keyword"] {
+    background-color: rgb(187, 187, 70);
+}
+
+.container p {
+    color: purple;
+}
+
+.direct-container>p {
+    color: orange;
+}
+
+h2+p {
+    color: brown;
+}
+
+h3~p {
+    font-style: italic;
+}
+
+input:focus {
+    border: 2px solid blue;
+    outline: none;
+    background-color: #eef;
+}
+
+input[type="checkbox"]:checked+label {
+    color: green;
+    font-weight: bold;
+}
