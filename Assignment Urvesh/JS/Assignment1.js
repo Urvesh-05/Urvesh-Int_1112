@@ -17,5 +17,5 @@ if (purchaseAmount > 5000) {
 
 let finalAmount = purchaseAmount - (purchaseAmount * discount / 100);
 
-alert(`Hi ${name}! You received a total discount of ${discount}%. Final amount: ₹${finalAmount}`);
+console.log(`Hi ${name}! You received a total discount of ${discount}%. Final amount: ₹${finalAmount}`);
 
