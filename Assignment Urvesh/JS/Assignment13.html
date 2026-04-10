@@ -1,0 +1,195 @@
+
+<!-- part of js Assignment 3:single mini web app (UI + JS) -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini web App</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    li {
+      background: #f1f1f1;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: 20px;
+      color: white;
+      font-size: 12px;
+    }
+
+    .senior {
+      background: #28a745;
+    }
+
+    .mid {
+      background: #ffc107;
+      color: black;
+    }
+
+    .amount {
+      font-weight: bold;
+      color: #007bff;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="container">
+
+  <div class="card">
+    <h2> Employee Processor</h2>
+    <button onclick="processEmployees()">Process Employees</button>
+    <ul id="empResult"></ul>
+  </div>
+
+  <div class="card">
+    <h2> Order Processor</h2>
+    <button onclick="processOrders()">Process Orders</button>
+    <ul id="orderResult"></ul>
+  </div>
+
+</div>
+
+<script>
+const employees = [
+  { name: "Amit", salary: 50000 },
+  { name: "Neha", salary: 30000 },
+  { name: "Raj", salary: 80000 },
+  { name: "Priya", salary: 45000 }
+];
+
+const orders = [
+  {
+    id: 1,
+    items: [
+      { name: "Pen", price: 10, qty: 2 },
+      { name: "Book", price: 50, qty: 1 }
+    ]
+  },
+  {
+    id: 2,
+    items: [
+      { name: "Bag", price: 500, qty: 1 },
+      { name: "Pencil", price: 5, qty: 5 }
+    ]
+  }
+];
+
+function processEmployees() {
+  const result = employees
+    .filter(emp => emp.salary > 40000)
+    .map(emp => {
+      const newSalary = emp.salary * 1.10;
+      return {
+        ...emp,
+        salary: newSalary,
+        level: newSalary >= 70000 ? "Senior" : "Mid"
+      };
+    });
+
+  const ul = document.getElementById("empResult");
+  ul.innerHTML = "";
+
+  result.forEach(emp => {
+    const li = document.createElement("li");
+
+    const levelClass = emp.level === "Senior" ? "senior" : "mid";
+
+    li.innerHTML = `
+      <span>${emp.name} - ₹${emp.salary.toFixed(0)}</span>
+      <span class="badge ${levelClass}">${emp.level}</span>
+    `;
+
+    ul.appendChild(li);
+  });
+}
+
+function processOrders() {
+  const result = orders.map(order => {
+    const totalAmount = order.items.reduce(
+      (sum, item) => sum + item.price * item.qty, 0
+    );
+
+    const totalQuantity = order.items.reduce(
+      (sum, item) => sum + item.qty, 0
+    );
+
+    return {
+      ...order,
+      totalAmount,
+      totalQuantity
+    };
+  });
+
+  const ul = document.getElementById("orderResult");
+  ul.innerHTML = "";
+
+  result.forEach(order => {
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <span>Order ${order.id}</span>
+      <span class="amount">₹${order.totalAmount} | Qty: ${order.totalQuantity}</span>
+    `;
+
+    ul.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
